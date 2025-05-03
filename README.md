@@ -2,6 +2,16 @@
 
 > Example project demonstrating how to expose FastAPI endpoints as Model Context Protocol (MCP) tools using `fastapi-mcp`. Includes a basic LangChain agent (`langchain_client.py`) that connects to the local FastAPI server via HTTP/SSE using `langchain-mcp-adapters` to discover and use the exposed tools.
 
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- **Python:** Version 3.10 or higher recommended.
+- **`uv`:** The Python package manager used in this project. ([Installation Instructions](https://astral.sh/uv#installation))
+- **Node.js and npm:** Required for `npx` (used to run the optional MCP Inspector). You can download Node.js (which includes npm) from [nodejs.org](https://nodejs.org/).
+- **Git:** For cloning the repository.
+- **OpenAI API Key:** Required for the LangChain client example. You need to set this in a `.env` file.
+
 This project demonstrates setting up a basic FastAPI application and exposing its endpoints as Model Context Protocol (MCP) tools using the `fastapi-mcp` library. It also includes a LangChain agent client that connects to and uses these tools, and covers configuring Cursor to connect as well.
 
 ## Getting Started / How to Run
@@ -37,11 +47,17 @@ This project demonstrates setting up a basic FastAPI application and exposing it
 
     The client will connect to the server, discover tools, and run a query using the agent.
 
-7.  **(Optional) Test `greet_user`:** To test the `greet_user` tool with the LangChain client:
-    - Uncomment the `@app.get("/greet/{name}")` endpoint definition in `main.py`.
-    - The Uvicorn server should auto-reload due to the `--reload` flag.
-    - Uncomment the `query2` section in `langchain_client.py`.
-    - Run the client again (`uv run python langchain_client.py`).
+7.  **(Optional) Test Server with MCP Inspector:** Before running the LangChain client, or for more direct testing, you can use the official MCP Inspector tool:
+
+    - Ensure the FastAPI server is running (Step 5).
+    - Open another terminal and run: `npx @modelcontextprotocol/inspector`
+      _(`npx` comes with Node.js/npm. If this command fails, ensure Node.js is installed and accessible in your PATH.)_
+    - In the inspector UI, connect to your server URL: `http://127.0.0.1:8000/mcp`
+    - Navigate to "Tools", click "List Tools" to see `read_root__get` and `greet_user_greet__name__get`.
+    - Select a tool, fill parameters (e.g., `name` for greet_user), and click "Run Tool".
+
+8.  **(Optional) Test `greet_user` with LangChain Client:** The `greet_user` endpoint and the corresponding test query (`query2`) in `langchain_client.py` are currently active. Simply run the LangChain client (Step 6) and observe the second part of its execution where it should attempt to greet the user 'LangChain'.
+    - _(If you want to disable this test, comment out the `@app.get("/greet/{name}")` endpoint in `main.py` and the `query2` section in `langchain_client.py`)_
 
 ## Goal
 
