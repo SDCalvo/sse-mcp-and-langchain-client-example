@@ -28,6 +28,7 @@ This project demonstrates setting up a basic FastAPI application and exposing it
     uvicorn main:app --reload --port 8000
     ```
     Keep this terminal running.
+    _(Alternatively, you can use the `Python: FastAPI MCP` debug configuration defined in `.vscode/launch.json` within VS Code / Cursor to run the server with the debugger attached.)_
 6.  **Run the LangChain Client:** Open a _second_ terminal and run:
 
     ```bash
