@@ -279,3 +279,7 @@ This section summarizes features and concepts from the `fastapi-mcp` documentati
   )
   ```
 - Exposed endpoints can be filtered using `include_operations`, `exclude_operations`, `include_tags`, `exclude_tags` during `FastApiMCP` initialization.
+
+## Acknowledgements
+
+This project was developed with the assistance of AI pair programming tools, including Google's Gemini model integrated into Cursor and OpenAI's ChatGPT for research and documentation retrieval. Their contributions were invaluable throughout the process.
