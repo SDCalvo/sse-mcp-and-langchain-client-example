@@ -4,9 +4,6 @@
 # Python virtual environment
 .venv/
 
-# IDE files
-.vscode/
-
 # Python cache
 __pycache__/
 *.pyc
