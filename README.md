@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/sdcalvo-sse-mcp-and-langchain-client-example-badge.png)](https://mseep.ai/app/sdcalvo-sse-mcp-and-langchain-client-example)
+
 # FastAPI MCP Server + LangChain Client Example
 
 > Example project demonstrating how to expose FastAPI endpoints as Model Context Protocol (MCP) tools using `fastapi-mcp`. Includes a basic LangChain agent (`langchain_client.py`) that connects to the local FastAPI server via HTTP/SSE using `langchain-mcp-adapters` to discover and use the exposed tools.
